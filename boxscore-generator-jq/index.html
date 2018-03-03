@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Boxscore Generator with jQuery</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <script src="app.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Boxscore</h1>
+    <div class="card-panel">
+        <table id="boxscore-table">
+            <tr class="header">
+                <th>Player</th>
+                <th>PTS</th>
+                <th>REB</th>
+                <th>AST</th>
+                <th>STL</th>
+                <th>BLK</th>
+            </tr>
+            <tr class="total">
+                <td>TOTAL</td>
+                <td class="pts-total">0</td>
+                <td class="reb-total">0</td>
+                <td class="ast-total">0</td>
+                <td class="stl-total">0</td>
+                <td class="blk-total">0</td>
+            </tr>
+        </table>
+    </div>
+
+    <h4>Add Play</h4>
+    <div class="card-panel">
+        <div class="row">
+            <div class="col s2">
+                <label for="player">player</label>
+                <input id="player" type="text"/>
+            </div>
+            <div class="col s1">
+                <label for="pts">PTS</label>
+                <input id="pts" type="number"/>
+            </div>
+            <div class="col s1">
+                <label for="reb">REB</label>
+                <input id="reb" type="number"/>
+            </div>
+            <div class="col s1">
+                <label for="ast">AST</label>
+                <input id="ast" type="number"/>
+            </div>
+            <div class="col s1">
+                <label for="stl">STL</label>
+                <input id="stl" type="number"/>
+            </div>
+            <div class="col s1">
+                <label for="blk">BLK</label>
+                <input id="blk" type="number"/>
+            </div>
+        </div>
+        <button id="add" class="btn waves-effect waves-light">Submit</button>
+    </div>
+</div>
+</body>
+</html>
