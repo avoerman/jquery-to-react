@@ -1,0 +1,7 @@
+body {
+    background: url("../assets/court.jpg") repeat;
+}
+
+.total td {
+    font-weight: bold;
+}

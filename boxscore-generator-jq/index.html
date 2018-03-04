@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
+    <link rel="stylesheet" href="app.css" />
     <script src="app.js"></script>
+
 </head>
 <body>
 <div class="container">
@@ -17,6 +19,12 @@
             <tr class="header">
                 <th>Player</th>
                 <th>PTS</th>
+                <th>FG</th>
+                <th>FG%</th>
+                <th>3PT</th>
+                <th>3PT%</th>
+                <th>FT</th>
+                <th>FT%</th>
                 <th>REB</th>
                 <th>AST</th>
                 <th>STL</th>
@@ -25,6 +33,12 @@
             <tr class="total">
                 <td>TOTAL</td>
                 <td class="pts-total">0</td>
+                <td class="fg-total">0-0</td>
+                <td class="fgpc-total">0%</td>
+                <td class="three-total">0-0</td>
+                <td class="threepc-total">0%</td>
+                <td class="ft-total">0-0</td>
+                <td class="ftpc-total">0%</td>
                 <td class="reb-total">0</td>
                 <td class="ast-total">0</td>
                 <td class="stl-total">0</td>
@@ -36,32 +50,48 @@
     <h4>Add Play</h4>
     <div class="card-panel">
         <div class="row">
-            <div class="col s2">
+            <div class="col s3">
                 <label for="player">player</label>
                 <input id="player" type="text"/>
             </div>
-            <div class="col s1">
-                <label for="pts">PTS</label>
-                <input id="pts" type="number"/>
+            <div class="col s9">
+                <div class="row">
+                    <div class="col">
+                        <button id="fg-make" class="btn waves-effect waves-light green accent-4">FG MADE</button>
+                    </div>
+                    <div class="col">
+                        <button id="fg-miss" class="btn waves-effect waves-light red accent-1">FG MISS</button>
+                    </div>
+                    <div class="col">
+                        <button id="three-make" class="btn waves-effect waves-light green accent-4">3P MAKE</button>
+                    </div>
+                    <div class="col">
+                        <button id="three-miss" class="btn waves-effect waves-light red accent-1">3P MISS</button>
+                    </div>
+                    <div class="col">
+                        <button id="ft-make" class="btn waves-effect waves-light green accent-4">FT MAKE</button>
+                    </div>
+                    <div class="col">
+                        <button id="ft-miss" class="btn waves-effect waves-light red accent-1">FT MISS</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button id="reb" class="btn waves-effect waves-light yellow accent-4">REB</button>
+                    </div>
+                    <div class="col">
+                        <button id="ast" class="btn waves-effect waves-light brown accent-4">AST</button>
+                    </div>
+                    <div class="col">
+                        <button id="stl" class="btn waves-effect waves-light purple accent-4">STL</button>
+                    </div>
+                    <div class="col">
+                        <button id="blk" class="btn waves-effect waves-light grey accent-4">BLK</button>
+                    </div>
+                </div>
             </div>
-            <div class="col s1">
-                <label for="reb">REB</label>
-                <input id="reb" type="number"/>
-            </div>
-            <div class="col s1">
-                <label for="ast">AST</label>
-                <input id="ast" type="number"/>
-            </div>
-            <div class="col s1">
-                <label for="stl">STL</label>
-                <input id="stl" type="number"/>
-            </div>
-            <div class="col s1">
-                <label for="blk">BLK</label>
-                <input id="blk" type="number"/>
-            </div>
+
         </div>
-        <button id="add" class="btn waves-effect waves-light">Submit</button>
     </div>
 </div>
 </body>
