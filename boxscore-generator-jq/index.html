@@ -3,96 +3,84 @@
 <head>
     <title>Boxscore Generator with jQuery</title>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
-    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="app.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
     <script src="app.js"></script>
 
 </head>
 <body>
-<div class="container">
-    <h1>Boxscore</h1>
-    <div class="card-panel">
-        <table id="boxscore-table">
-            <tr class="header">
-                <th>Player</th>
-                <th>PTS</th>
-                <th>FG</th>
-                <th>FG%</th>
-                <th>3PT</th>
-                <th>3PT%</th>
-                <th>FT</th>
-                <th>FT%</th>
-                <th>REB</th>
-                <th>AST</th>
-                <th>STL</th>
-                <th>BLK</th>
-            </tr>
-            <tr class="total">
-                <td>TOTAL</td>
-                <td class="pts-total">0</td>
-                <td class="fg-total">0-0</td>
-                <td class="fgpc-total">0%</td>
-                <td class="three-total">0-0</td>
-                <td class="threepc-total">0%</td>
-                <td class="ft-total">0-0</td>
-                <td class="ftpc-total">0%</td>
-                <td class="reb-total">0</td>
-                <td class="ast-total">0</td>
-                <td class="stl-total">0</td>
-                <td class="blk-total">0</td>
-            </tr>
-        </table>
-    </div>
+<section class="section">
+    <div class="container">
+        <div class="box">
+            <p class="title">Boxscore</p>
+            <table class="table is-striped is-fullwidth" id="boxscore-table">
+                <thead>
+                <tr class="header">
+                    <th>Player</th>
+                    <th>PTS</th>
+                    <th>FG</th>
+                    <th>FG%</th>
+                    <th>3PT</th>
+                    <th>3PT%</th>
+                    <th>FT</th>
+                    <th>FT%</th>
+                    <th>REB</th>
+                    <th>AST</th>
+                    <th>STL</th>
+                    <th>BLK</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="total">
+                    <td>TOTAL</td>
+                    <td class="pts-total">0</td>
+                    <td class="fg-total">0-0</td>
+                    <td class="fgpc-total">0%</td>
+                    <td class="three-total">0-0</td>
+                    <td class="threepc-total">0%</td>
+                    <td class="ft-total">0-0</td>
+                    <td class="ftpc-total">0%</td>
+                    <td class="reb-total">0</td>
+                    <td class="ast-total">0</td>
+                    <td class="stl-total">0</td>
+                    <td class="blk-total">0</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <h4>Add Play</h4>
-    <div class="card-panel">
-        <div class="row">
-            <div class="col s3">
-                <label for="player">player</label>
-                <input id="player" type="text"/>
-            </div>
-            <div class="col s9">
-                <div class="row">
-                    <div class="col">
-                        <button id="fg-make" class="btn waves-effect waves-light green accent-4">FG MADE</button>
-                    </div>
-                    <div class="col">
-                        <button id="fg-miss" class="btn waves-effect waves-light red accent-1">FG MISS</button>
-                    </div>
-                    <div class="col">
-                        <button id="three-make" class="btn waves-effect waves-light green accent-4">3P MAKE</button>
-                    </div>
-                    <div class="col">
-                        <button id="three-miss" class="btn waves-effect waves-light red accent-1">3P MISS</button>
-                    </div>
-                    <div class="col">
-                        <button id="ft-make" class="btn waves-effect waves-light green accent-4">FT MAKE</button>
-                    </div>
-                    <div class="col">
-                        <button id="ft-miss" class="btn waves-effect waves-light red accent-1">FT MISS</button>
+        <div class="box">
+            <p class="subtitle">Add Play</p>
+            <div class="columns">
+                <div class="column is-one-quarter">
+                    <div class="field">
+                        <label for="player" class="label">Player</label>
+                        <div class="control">
+                            <input class="input" id="player" type="text"/>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <button id="reb" class="btn waves-effect waves-light yellow accent-4">REB</button>
+                <div class="column">
+                    <div>
+                        <button id="fg-make" class="button is-success">FG MADE</button>
+                        <button id="fg-miss" class="button is-danger">FG MISS</button>
+                        <button id="three-make" class="button is-success">3P MAKE</button>
+                        <button id="three-miss" class="button is-danger">3P MISS</button>
+                        <button id="ft-make" class="button is-success">FT MAKE</button>
+                        <button id="ft-miss" class="button is-danger">FT MISS</button>
                     </div>
-                    <div class="col">
-                        <button id="ast" class="btn waves-effect waves-light brown accent-4">AST</button>
-                    </div>
-                    <div class="col">
-                        <button id="stl" class="btn waves-effect waves-light purple accent-4">STL</button>
-                    </div>
-                    <div class="col">
-                        <button id="blk" class="btn waves-effect waves-light grey accent-4">BLK</button>
+                    <div style="margin-top: 6px;">
+                        <button id="reb" class="button is-info ">REB</button>
+                        <button id="ast" class="button is-info ">AST</button>
+                        <button id="stl" class="button is-info ">STL</button>
+                        <button id="blk" class="button is-info ">BLK</button>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-</div>
+</section>
 </body>
 </html>

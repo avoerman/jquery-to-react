@@ -9,7 +9,7 @@
   "author": "Alex Voerman",
   "license": "ISC",
   "devDependencies": {
-    "jquery": "^3.3.1",
-    "materialize-css": "^0.100.2"
+    "bulma": "^0.6.2",
+    "jquery": "^3.3.1"
   }
 }

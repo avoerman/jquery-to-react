@@ -114,7 +114,7 @@ $(document).ready(function () {
     function renderTable() {
         let html = globalBoxState.map(boxItem => htmlBoxItemRow(boxItem));
         $('#boxscore-table').find('tr').not('.header').not('.total').remove();
-        $('#boxscore-table').find('tr.header').after(html);
+        $('#boxscore-table').find('tbody').prepend(html);
         calculateTotals();
     }
 
