@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background: url("./court.jpg") repeat;
+    background: url(./assets/court.jpg) repeat;
 }
 
 .total td {
