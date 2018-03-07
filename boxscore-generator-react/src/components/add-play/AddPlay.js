@@ -14,7 +14,6 @@ const defaultPlay = {
 
 class AddPlay extends Component {
 
-
     constructor(props) {
         super(props);
         this.state = {
@@ -22,16 +21,16 @@ class AddPlay extends Component {
         };
     }
 
-    handlePlayerInput(e) {
+    handlePlayerInput = (e) => {
         const playerValue = e.target.value;
         this.setState({ player: playerValue });
-    }
+    };
 
-    handlePlay(variable) {
+    handlePlay = (variable) => {
         if (this.state.player) {
             this.props.addedPlay({ ...defaultPlay, player: this.state.player, [variable]: 1 });
         }
-    }
+    };
 
     render() {
         return (
@@ -42,24 +41,24 @@ class AddPlay extends Component {
                         <div className="field">
                             <label htmlFor="player" className="label">Player</label>
                             <div className="control">
-                                <input onChange={this.handlePlayerInput.bind(this)} className="input" type="text"/>
+                                <input onChange={this.handlePlayerInput} className="input" type="text"/>
                             </div>
                         </div>
                     </div>
                     <div className="column play-buttons">
                         <div>
-                            <button className="button is-success" onClick={this.handlePlay.bind(this, 'fgMake')}>FG MADE</button>
-                            <button className="button is-danger" onClick={this.handlePlay.bind(this, 'fgMiss')}>FG MISS</button>
-                            <button className="button is-success" onClick={this.handlePlay.bind(this, 'threeMake')}>3P MAKE</button>
-                            <button className="button is-danger" onClick={this.handlePlay.bind(this, 'threeMiss')}>3P MISS</button>
-                            <button className="button is-success" onClick={this.handlePlay.bind(this, 'ftMake')}>FT MAKE</button>
-                            <button className="button is-danger" onClick={this.handlePlay.bind(this, 'ftMiss')}>FT MISS</button>
+                            <button className="button is-success" onClick={() => this.handlePlay('fgMake')}>FG MADE</button>
+                            <button className="button is-danger" onClick={() => this.handlePlay('fgMiss')}>FG MISS</button>
+                            <button className="button is-success" onClick={() => this.handlePlay('threeMake')}>3P MAKE</button>
+                            <button className="button is-danger" onClick={() => this.handlePlay('threeMiss')}>3P MISS</button>
+                            <button className="button is-success" onClick={() => this.handlePlay('ftMake')}>FT MAKE</button>
+                            <button className="button is-danger" onClick={() => this.handlePlay('ftMiss')}>FT MISS</button>
                         </div>
-                        <div style={{ marginTop: '6px' }}>
-                            <button className="button is-info" onClick={this.handlePlay.bind(this, 'reb')}>REB</button>
-                            <button className="button is-info" onClick={this.handlePlay.bind(this, 'ast')}>AST</button>
-                            <button className="button is-info" onClick={this.handlePlay.bind(this, 'stl')}>STL</button>
-                            <button className="button is-info" onClick={this.handlePlay.bind(this, 'blk')}>BLK</button>
+                        <div className="button-row-2">
+                            <button className="button is-info" onClick={() => this.handlePlay('reb')}>REB</button>
+                            <button className="button is-info" onClick={() => this.handlePlay('ast')}>AST</button>
+                            <button className="button is-info" onClick={() => this.handlePlay('stl')}>STL</button>
+                            <button className="button is-info" onClick={() => this.handlePlay('blk')}>BLK</button>
                         </div>
                     </div>
                 </div>
