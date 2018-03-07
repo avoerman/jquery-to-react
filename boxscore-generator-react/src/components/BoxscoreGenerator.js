@@ -70,7 +70,7 @@ class BoxscoreGenerator extends Component {
         };
     }
 
-    addedPlay(play) {
+    addedPlay = (play) => {
         if (!play.player) {
             return;
         }
@@ -89,13 +89,13 @@ class BoxscoreGenerator extends Component {
                 })
             });
         }
-    }
+    };
 
     render() {
         return (
             <div className="container">
                 <Boxscore boxItems={this.state.boxItems}/>
-                <AddPlay addedPlay={this.addedPlay.bind(this)}/>
+                <AddPlay addedPlay={this.addedPlay}/>
             </div>
         );
     }
