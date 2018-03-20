@@ -3,8 +3,6 @@ class PreviousButton extends React.Component {
     event.preventDefault();
 
     let newPage = this.props.currentPage - 1;
-    newPage = newPage >= 1 ? newPage : 1;
-
     this.props.onClick(newPage);
   };
 

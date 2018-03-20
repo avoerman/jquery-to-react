@@ -3,8 +3,6 @@ class NextButton extends React.Component {
     event.preventDefault();
 
     let newPage = this.props.currentPage + 1;
-    newPage = newPage > this.props.totalPages ? this.props.totalPages : newPage;
-
     this.props.onClick(newPage);
   };
 
