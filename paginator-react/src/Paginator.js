@@ -1,38 +1,61 @@
 class Paginator extends React.Component {
-  state = { currentPage: 1, totalPages: 0 };
+  constructor(props) {
+    super(props);
+
+    this.state = this.createPageState(props);
+
+    this.createPageState = this.createPageState.bind(this);
+    this.jumpToPage = this.jumpToPage.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState(this.createPageState(nextProps));
+  }
+
+  createPageState({ currentPage, totalPages }) {
+    return {
+      currentPage: currentPage || 1,
+      totalPages: totalPages || 1
+    };
+  }
 
   render() {
     return (
       <div className="field is-grouped">
-        {this.currentPage <= 1 ? null : (
-          <div className="control">
-            <a className="button is-info">Prev.</a>
-          </div>
-        )}
         <div className="control">
-          <PageSelector totalPages={1} currentPage={1} />
+          <PreviousButton
+            currentPage={this.state.currentPage}
+            onClick={this.jumpToPage}
+          />
         </div>
         <div className="control">
-          <a className="button is-info">Next</a>
+          <PageSelector
+            selectedPage={this.state.currentPage}
+            totalPages={this.state.totalPages}
+            onSelect={this.jumpToPage}
+          />
+        </div>
+        <div className="control">
+          <NextButton
+            currentPage={this.state.currentPage}
+            totalPages={this.state.totalPages}
+            onClick={this.jumpToPage}
+          />
         </div>
       </div>
     );
   }
-}
 
-function PageSelector() {
-  return (
-    <div className="select is-info">
-      <select name="text" value="2" readOnly>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
-    </div>
-  );
+  jumpToPage(newPage) {
+    const newState = this.createPageState({ currentPage: newPage });
+
+    this.setState({ currentPage: newState.currentPage }, () => {
+      this.props.onPageChange(this.state);
+    });
+  }
 }
 
 ReactDOM.render(
-  <Paginator totalItems={12} pageSize={3} />,
+  <Paginator currentPage={2} totalPages={5} onPageChange={console.log} />,
   document.querySelector('[data-react-component="Paginator"]')
 );
