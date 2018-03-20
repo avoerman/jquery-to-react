@@ -1,12 +1,8 @@
 class Paginator extends React.Component {
-  createPageState = ({ currentPage, totalPages }) => {
-    return {
-      currentPage: currentPage || 1,
-      totalPages: totalPages || 1
-    };
+  state = {
+    currentPage: this.props.currentPage || 1,
+    totalPages: this.props.totalPages || 1
   };
-
-  state = this.createPageState(this.props);
 
   render() {
     return (
@@ -36,9 +32,7 @@ class Paginator extends React.Component {
   }
 
   jumpToPage = newPage => {
-    const newState = this.createPageState({ currentPage: newPage });
-
-    this.setState({ currentPage: newState.currentPage }, () => {
+    this.setState({ currentPage: newPage || 1 }, () => {
       this.props.onPageChange(this.state);
     });
   };

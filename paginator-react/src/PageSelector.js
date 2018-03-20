@@ -1,16 +1,10 @@
 class PageSelector extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.handleSelect = this.handleSelect.bind(this);
-  }
-
-  handleSelect(event) {
+  handleSelect = event => {
     event.preventDefault();
 
     const selectedPage = Number(event.target.value);
     this.props.onSelect(selectedPage);
-  }
+  };
 
   render() {
     return (
@@ -22,13 +16,13 @@ class PageSelector extends React.Component {
     );
   }
 
-  options(totalPages, selectedPage) {
+  options = (totalPages, selectedPage) => {
     return sequence(totalPages).map(pageNum => (
       <option key={pageNum} value={pageNum}>
         {pageNum}
       </option>
     ));
-  }
+  };
 }
 
 function sequence(num) {

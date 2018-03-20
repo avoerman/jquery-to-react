@@ -7,12 +7,11 @@ class PreviousButton extends React.Component {
   };
 
   render() {
-    const hideBtn = this.props.currentPage <= 1 ? 'is-hidden' : '';
-
     return (
       <a
-        className={`button is-info is-rounded ${hideBtn}`}
+        className={`button is-info is-rounded`}
         onClick={this.clickHandler}
+        disabled={this.props.currentPage <= 1}
       >
         <span className="icon is-small">
           <i className="fas fa-chevron-left" />

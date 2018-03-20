@@ -8,13 +8,12 @@ class NextButton extends React.Component {
 
   render() {
     const { totalPages, currentPage } = this.props;
-    const hideBtn =
-      totalPages <= 1 || currentPage >= totalPages ? 'is-hidden' : '';
 
     return (
       <a
-        className={`button is-info is-rounded ${hideBtn}`}
+        className={`button is-info is-rounded`}
         onClick={this.clickHandler}
+        disabled={totalPages <= 1 || currentPage >= totalPages}
       >
         <span>Next</span>
         <span className="icon is-small">
