@@ -1,31 +1,25 @@
 class PreviousButton extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.clickHandler = this.clickHandler.bind(this);
-  }
-
-  isDisabled(pageNum) {
-    return pageNum <= 1;
-  }
-
-  showHideClass(pageNum) {
-    return this.isDisabled(pageNum) ? 'button-hidden' : '';
-  }
-
-  clickHandler(event) {
+  clickHandler = event => {
     event.preventDefault();
 
-    const newPage = this.props.currentPage - 1;
-    this.props.onClick(newPage < 1 ? 1 : newPage);
-  }
+    let newPage = this.props.currentPage - 1;
+    newPage = newPage >= 1 ? newPage : 1;
+
+    this.props.onClick(newPage);
+  };
 
   render() {
-    let hideNav = this.showHideClass(this.props.currentPage);
+    const hideBtn = this.props.currentPage <= 1 ? 'is-hidden' : '';
 
     return (
-      <a className={`button is-info ${hideNav}`} onClick={this.clickHandler}>
-        <span className="nav-icon icon-left">Prev.</span>
+      <a
+        className={`button is-info is-rounded ${hideBtn}`}
+        onClick={this.clickHandler}
+      >
+        <span className="icon is-small">
+          <i className="fas fa-chevron-left" />
+        </span>
+        <span>Prev.</span>
       </a>
     );
   }

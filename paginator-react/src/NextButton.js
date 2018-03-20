@@ -1,41 +1,28 @@
 class NextButton extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.clickHandler = this.clickHandler.bind(this);
-  }
-
-  isDisabled(page, totalPages) {
-    return totalPages <= 1 || page >= totalPages;
-  }
-
-  showHideClass(pageNum, totalPages) {
-    return this.isDisabled(pageNum, totalPages) ? 'button-hidden' : '';
-  }
-
-  clickHandler(event) {
+  clickHandler = event => {
     event.preventDefault();
 
-    const newPage = this.props.currentPage + 1;
-    this.props.onClick(
-      newPage > this.props.totalPages ? this.props.totalPages : newPage
-    );
-  }
+    let newPage = this.props.currentPage + 1;
+    newPage = newPage > this.props.totalPages ? this.props.totalPages : newPage;
+
+    this.props.onClick(newPage);
+  };
 
   render() {
-    let hideNav = this.showHideClass(
-      this.props.currentPage,
-      this.props.totalPages
-    );
+    const { totalPages, currentPage } = this.props;
+    const hideBtn =
+      totalPages <= 1 || currentPage >= totalPages ? 'is-hidden' : '';
 
     return (
-      <a className={`button is-info ${hideNav}`} onClick={this.clickHandler}>
-        <span className="nav-icon icon-right">Next</span>
+      <a
+        className={`button is-info is-rounded ${hideBtn}`}
+        onClick={this.clickHandler}
+      >
+        <span>Next</span>
+        <span className="icon is-small">
+          <i className="fas fa-chevron-right" />
+        </span>
       </a>
     );
-  }
-
-  preventDefault(e) {
-    return e.preventDefault();
   }
 }

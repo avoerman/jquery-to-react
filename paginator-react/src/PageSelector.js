@@ -14,14 +14,10 @@ class PageSelector extends React.Component {
 
   render() {
     return (
-      <span>
-        Page
-        <span className="select is-info">
-          <select onChange={this.handleSelect} value={this.props.selectedPage}>
-            {this.options(this.props.totalPages, this.props.selectedPage)}
-          </select>
-        </span>
-        of {this.props.totalPages}
+      <span className="select is-info is-rounded">
+        <select onChange={this.handleSelect} value={this.props.selectedPage}>
+          {this.options(this.props.totalPages, this.props.selectedPage)}
+        </select>
       </span>
     );
   }
