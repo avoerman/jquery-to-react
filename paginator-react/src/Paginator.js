@@ -4,6 +4,12 @@ class Paginator extends React.Component {
     totalPages: this.props.totalPages || 1
   };
 
+  jumpToPage = newPage => {
+    this.setState({ currentPage: newPage || 1 }, () => {
+      this.props.onPageChange(this.state);
+    });
+  };
+
   render() {
     return (
       <div className="field is-grouped">
@@ -30,12 +36,6 @@ class Paginator extends React.Component {
       </div>
     );
   }
-
-  jumpToPage = newPage => {
-    this.setState({ currentPage: newPage || 1 }, () => {
-      this.props.onPageChange(this.state);
-    });
-  };
 }
 
 ReactDOM.render(
