@@ -7,24 +7,25 @@ class PageSelector extends React.Component {
   };
 
   render() {
+    const { totalPages, selectedPage } = this.props;
+
     return (
       <span className="select is-info is-rounded">
-        <select onChange={this.handleSelect} value={this.props.selectedPage}>
-          {this.options(this.props.totalPages, this.props.selectedPage)}
+        <select onChange={this.handleSelect} value={selectedPage}>
+          {rangeOfNums(1, totalPages).map(pageNum => (
+            <option key={pageNum} value={pageNum}>
+              {pageNum}
+            </option>
+          ))}
         </select>
       </span>
     );
   }
-
-  options = (totalPages, selectedPage) => {
-    return sequence(totalPages).map(pageNum => (
-      <option key={pageNum} value={pageNum}>
-        {pageNum}
-      </option>
-    ));
-  };
 }
 
-function sequence(num) {
-  return Array.from(Array(num), (_, idx) => idx + 1);
+// Eg: (1, 5) => [ 1, 2, 3, 4, 5 ]
+// Eg: (-3, 2) => [ -3, -2, -1, 0, 1, 2 ]
+function rangeOfNums(start, end) {
+  const rangeSize = Math.abs(end - start) + 1;
+  return [...Array(rangeSize)].map((_, idx) => start + idx);
 }
